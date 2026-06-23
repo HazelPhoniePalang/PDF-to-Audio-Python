@@ -1,0 +1,121 @@
+# PDF-to-Audio Converter 🎙️📖
+
+A Python application that converts PDF documents into audio using text-to-speech technology. Perfect for reading PDFs hands-free!
+
+## Features ✨
+
+- **Multiple PDF Support**: Read different PDFs in a single session with a loop
+- **Custom Starting Page**: Choose which page to start reading from
+- **User-Friendly Input**: Simple prompts for directory and filename
+- **Adjustable Speed**: Control the reading speed (rate property)
+- **Error Handling**: Validates file paths and handles missing files gracefully
+
+## Requirements 📋
+
+- Python 3.6+
+- `pyttsx3` - Text-to-speech engine
+- `PyPDF2` - PDF reading library
+
+## Installation 🔧
+
+1. Install required libraries:
+```bash
+pip install pyttsx3 PyPDF2
+```
+
+2. Clone or download this project:
+```bash
+git clone https://github.com/HazelPhoniePalang/pdf-to-audio-converter.git
+cd pdf-to-audio-converter
+```
+
+## Usage 🚀
+
+Run the script:
+```bash
+python pdf_to_audio.py
+```
+
+Then follow the prompts:
+```
+Enter the directory path (e.g., /home/user/documents): /path/to/your/pdf
+Enter the PDF filename: document.pdf
+The PDF has 150 pages.
+What page should I start? 1
+Reading page 1...
+[Audio plays]
+...
+Done reading the PDF!
+
+Do you want to read another PDF? (yes/no): yes
+→ Repeat the process, or type 'no' to exit
+```
+
+### Page Selection
+- Enter `-1` to start from page 1 (all pages)
+- Enter any page number (e.g., `14`) to start from that page
+- The script reads all pages from your starting point to the end
+
+## Known Issues ⚠️
+
+### Still Needs Fixing:
+- **Only reads one page** instead of the full range selected
+  - Currently debugging why the loop may not continue through all pages
+  - Possible causes: text extraction returning empty for some pages, or loop termination issue
+  - Status: **IN PROGRESS** 🔧
+
+## Project Structure 📁
+
+```
+pdf-to-audio-converter/
+│
+├── README.md
+└── pdf_to_audio.py
+```
+
+## How It Works 🔍
+
+1. **User Input**: Accepts directory path and PDF filename
+2. **File Validation**: Checks if the file exists
+3. **PDF Reading**: Uses PyPDF2 to extract pages and text
+4. **Text-to-Speech**: Converts extracted text to audio using pyttsx3
+5. **Loop Control**: Asks user if they want to continue or exit
+
+## Customization 🎨
+
+Adjust the reading speed in the code:
+```python
+speak.setProperty('rate', 150)  # Default: 150 words per minute
+# Slower: 100-120
+# Faster: 200+
+```
+
+Adjust volume:
+```python
+speak.setProperty('volume', 1.0)  # 0.0 to 1.0
+```
+
+## Future Improvements 📝
+
+- [ ] Fix the single-page reading issue
+- [ ] Add support for selecting specific page ranges (e.g., pages 5-20)
+- [ ] Save audio output to MP3/WAV files
+- [ ] Add progress indicator bar
+- [ ] Support for different voices/accents
+- [ ] Handle scanned PDFs with OCR
+- [ ] GUI interface using Tkinter/PyQt
+
+## Technologies Used 🛠️
+
+- **pyttsx3** - Offline text-to-speech
+- **PyPDF2** - PDF text extraction
+- **Python 3** - Core language
+
+## Author 👩‍💻
+
+Created by Hazel Phonie Palang  
+BSIT Student | University of Mindanao
+
+---
+
+**Note**: This project is still in development. The main issue currently being debugged is the audio reading stopping after one page. Contributions and suggestions are welcome! 💗
